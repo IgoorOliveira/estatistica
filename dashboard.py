@@ -6,11 +6,6 @@ import base64
 from io import BytesIO
 
 
-# Função para carregar os dados do arquivo Excel
-def load_data(file):
-    df = pd.read_excel(file)
-    return df
-
 # Função para converter o DataFrame em imagem PNG
 def dataframe_to_png(df):
     plt.figure(figsize=(15, 10))
@@ -74,9 +69,9 @@ def main():
     st.title('Dashboard de Análise - Igor Ferreira de Oliveira')
     
     # Carregar dados
-    file = st.file_uploader("Carregar arquivo Excel", type=["xlsx"])
+    file = pd.read_excel("questionario.xlsx")
     if file is not None:
-        df = load_data(file)
+        df = file
         
         # Mostrar os primeiros registros
         st.subheader('Dados Carregados:')
